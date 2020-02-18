@@ -1,0 +1,61 @@
+<section class="bender">
+  <button class="start-game"
+          (click)="startGame()">
+    Start Game
+  </button>
+
+  <div class="control-btn"
+       *ngIf="itsEnidState">
+
+    <button class="take-mor-player"
+            (click)="takeCard()">
+      I'll take more
+    </button>
+
+    <button class="show-the-cards"
+            (click)="compareCard()">
+      show the cards
+    </button>
+  </div>
+  
+  <div class="score">
+
+    <div class="player-carts">
+      player cards:
+
+      <span class="player-hand"
+            *ngFor="let playerCard of handPlayer">
+        | {{ playerCard }} |
+      </span>
+    </div>
+
+    <div class="all-point-player">
+      all point player: {{ sumPlayerCards }}
+    </div>
+
+    <div class="dealer-carts" >
+      dealer carts:
+      <span *ngIf="!itsEnidState">
+        <span
+          *ngFor="let dealerCarts of handDealer">
+          | {{ dealerCarts }} |
+        </span>
+      </span>
+
+      <span *ngIf="itsEnidState">
+        | {{ handDealer }} |
+      </span>
+    </div>
+
+    <div class="all-point-dealer">
+      all point dealer:
+      <span *ngIf="!itsEnidState">
+        {{ sumDealerCards }}
+      </span>
+    </div>
+  </div>
+</section>
+
+<div class="result">
+  {{ result }}
+</div>
